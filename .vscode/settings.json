@@ -3,5 +3,6 @@
     "files.exclude": {
       "**/app/**/*.js.map": true,
       "**/app/**/*.js": true
-    }
+    },
+    "files.autoSave": "afterDelay"
 }
