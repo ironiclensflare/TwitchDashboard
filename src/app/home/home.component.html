@@ -1,18 +1,47 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-            <h1>This is the title</h1>
+            <h1>Search for a Twitch channel</h1>
+            <hr />
+            <form (submit)="getTwitchChannel()" class="form-inline">
+                <div class="form-group">
+                    <label for="username">Enter a username&nbsp;</label>
+                    <input id="username" type="text" class="form-control" [(ngModel)]="userName" name="username">
+                </div>
+                <input type="submit" class="btn btn-default" value="Search">
+            </form>
+        </div>
+    </div>
+    <div class="row" style="margin-top:1em">
+        <div class="col-md-12">
+            <div *ngIf="details.display_name" class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title">{{details.display_name}} <span *ngIf="details.partner" class="pull-right small"><span class="glyphicon glyphicon-usd"></span> Twitch Partner</span></h3>
+                </div>
+                <div class="panel-body">
+                    <img [src]="details.logo" [alt]="details.display_name" class="pull-right" style="max-width:200px" />
+                    <p><strong>Game: </strong>{{details.game}}</p>
+                    <p><strong>Status: </strong>{{details.status}}</p>
+                </div>
+                <table class="table">
+                    <tr>
+                        <th>Name</th>
+                        <th>Following since</th>
+                    </tr>
+                    <tr>
+                        <td>ironiclensflare</td>
+                        <td>2016-09-01</td>
+                    </tr>
+                    <tr>
+                        <td>ironiclensflare</td>
+                        <td>2016-09-01</td>
+                    </tr>
+                    <tr>
+                        <td>ironiclensflare</td>
+                        <td>2016-09-01</td>
+                    </tr>
+                </table>
+            </div>
         </div>
     </div>
 </div>
-
-<input type="text" [(ngModel)]="userName" (keyup.enter)="getTwitchChannel()" />
-
-<table *ngIf="channelDetails" class="table table-bordered table-striped">
-    <tr>
-        <th>Name</th>
-    </tr>
-    <tr>
-        <td>{{details.display_name}}</td>
-    </tr>
-</table>
