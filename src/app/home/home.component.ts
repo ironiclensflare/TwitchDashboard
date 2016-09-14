@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs/Rx';
 
 import { DataService } from '../shared/data.service';
 
@@ -10,11 +11,20 @@ import { DataService } from '../shared/data.service';
 export class HomeComponent implements OnInit {
     
     projectName: string;
+    userName: string;
+    channelDetails: any;
+    details: any = [];
 
     constructor(private dataService: DataService) { }
 
-    ngOnInit() { 
-        this.projectName = this.dataService.getProjectName();
-    }
+    ngOnInit() { }
 
+    getTwitchChannel() {
+        this.channelDetails = this.dataService.getTwitchDetails(this.userName)
+        .subscribe(details => {
+            debugger;
+            console.log(details);
+            this.details = details;
+        }, error => console.log(error));
+    }
 }
